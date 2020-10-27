@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -13,7 +14,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        // articlesフォルダのindex.blade.phpに表示
+        return view('articles.index', ['articles' => $articles]);
     }
 
     /**
@@ -45,7 +48,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+        // articlesフォルダのshow.blade.phpに表示
+        return view('articles.show', ['article' => $article]);
     }
 
     /**

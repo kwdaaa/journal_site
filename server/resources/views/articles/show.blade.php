@@ -9,9 +9,8 @@
 </p>
 
 <!-- 商品のidを元に編集ページへ遷移する -->
-<a href="/items"><button>一覧へ戻る</button></a>
-<a href="/items/{{ $item->id }}/edit"><button>編集する</button></a>
-<form action="/items/{{ $item->id }}" method="post"><button>削除する</button>
+<a href="/articles"><button>一覧へ戻る</button></a>
+<a href="/articles/{{ $article->id }}/edit"><button>編集する</button></a>
     @csrf
     @method('DELETE')
     {{-- confirmでYESかNOかみたいなのが出る。 --}}
