@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use Illuminate\Http\Request;
+
+
+// Articleモデルを読み込む準備
+// app > ProvidersのArticle.phpの中に入っているModelクラスを継承したArticleクラスを使いますよ宣言。
+use App\Article;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -26,7 +31,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -35,9 +40,29 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+
+
+    // 新規の登録処理
+    // Request から ArticleRequestに変更することで、バリデーションを書いたArticleRequest.phpを読み込む
+    // 10行目に use App\Http\Requests\ArticleRequest;つける。
+    public function store(ArticleRequest $request)
     {
-        //
+        // インスタンスの作成
+        $article = new Article;
+
+        // 値の用意
+        $article->title = $request->title;
+        $article->body = $request->body;
+
+        // articleのtimestampsは設定されてないからfalse
+        $article->timestamps = false;
+
+        // インスタンスに値を設定して保存
+        $article->save();
+
+        // 登録したらindexに戻る
+        return redirect('/articles');
     }
 
     /**
@@ -73,7 +98,21 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // ここはidで探して持ってくる以外はstoreと同じ
+        $article = Article::find($id);
+
+        // 値の用意
+        $article->title = $request->title;
+        $article->body = $request->body;
+
+        // articleのtimestampsは設定されてないからfalse
+        $article->timestamps = false;
+
+        // インスタンスに値を設定して保存
+        $article->save();
+
+        // 登録したらindexに戻る
+        return redirect('/articles');
     }
 
     /**
