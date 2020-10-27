@@ -12,11 +12,7 @@ use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $articles = Article::all();
@@ -65,12 +61,7 @@ class ArticleController extends Controller
         return redirect('/articles');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         $article = Article::find($id);
@@ -78,24 +69,13 @@ class ArticleController extends Controller
         return view('articles.show', ['article' => $article]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         // ここはidで探して持ってくる以外はstoreと同じ
@@ -115,14 +95,13 @@ class ArticleController extends Controller
         return redirect('/articles');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $item = Article::find($id);
+        $item->delete();
+
+        // redirectで一覧ページに飛ぶ
+        return redirect('/articles');
     }
 }
