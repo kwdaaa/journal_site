@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    </html><h1>論文詳細</h1>
+    <h1>論文詳細</h1>
 
     <p> 
         タイトル：{{ $article->title }}
@@ -38,3 +38,4 @@
     </form>
     </div>
 </body>
+</html>

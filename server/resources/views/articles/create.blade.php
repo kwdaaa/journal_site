@@ -8,7 +8,7 @@
         <ul>
             {{-- ->all()をつけることで連想配列のValueだけ取得...? --}}
             @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
@@ -28,7 +28,7 @@
     </p>
     <p>
         本文<br>
-        <textarea  type="text" name="body" value="{{ old('body') }}"></textarea>
+        <textarea  type="text" name="body">{{ old('body') }}</textarea>
     </p>
 
     <input type="submit" value="投稿">

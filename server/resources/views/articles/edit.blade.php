@@ -8,7 +8,7 @@
         <ul>
             {{-- ->all()をつけることで連想配列のValueだけ取得...? --}}
             @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
