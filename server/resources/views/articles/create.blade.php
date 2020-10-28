@@ -1,5 +1,7 @@
 {{-- エラーを表示するためのコード --}}
-@if (count($errors)>0)
+{{-- @if (!count($errors)) でもOK！--}}
+@if (count($errors) > 0)
+
     <div>
     {{-- count()関数。
     count($errors)で$errorsの数を数えてくれる。 --}}
