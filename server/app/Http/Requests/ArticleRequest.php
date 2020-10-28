@@ -15,7 +15,7 @@ class ArticleRequest extends FormRequest
     // 認証機能
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -32,7 +32,7 @@ class ArticleRequest extends FormRequest
         // required：必須項目、string：文字列型、max:50：最大50文字
         return [
             'title' =>      'required|string|max:50',
-            'body' =>       'required|string|max:2000',
+            'body' =>       'required|string|max:10000',
         ];
     }
 }

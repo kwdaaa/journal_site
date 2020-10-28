@@ -20,24 +20,11 @@ class ArticleController extends Controller
         return view('articles.index', ['articles' => $articles]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('articles.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
 
     // 新規の登録処理
     // Request から ArticleRequestに変更することで、バリデーションを書いたArticleRequest.phpを読み込む
@@ -72,7 +59,8 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('articles.edit', ['article' => $article]);
     }
 
     
@@ -98,8 +86,8 @@ class ArticleController extends Controller
     
     public function destroy($id)
     {
-        $item = Article::find($id);
-        $item->delete();
+        $article = Article::find($id);
+        $article->delete();
 
         // redirectで一覧ページに飛ぶ
         return redirect('/articles');
