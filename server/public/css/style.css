@@ -1,0 +1,12 @@
+ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+li{
+    padding: 5px 0px;
+}
+
+.buttons{
+    display: inline-block;
+}
