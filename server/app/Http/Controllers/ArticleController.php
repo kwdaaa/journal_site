@@ -64,7 +64,7 @@ class ArticleController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         // ここはidで探して持ってくる以外はstoreと同じ
         $article = Article::find($id);
